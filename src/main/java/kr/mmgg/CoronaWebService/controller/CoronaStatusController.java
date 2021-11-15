@@ -1,5 +1,6 @@
 package kr.mmgg.CoronaWebService.controller;
 
+import kr.mmgg.CoronaWebService.domain.CovidGraph;
 import kr.mmgg.CoronaWebService.domain.DomesticStatus;
 import kr.mmgg.CoronaWebService.repository.CoronaStatusRepository;
 import kr.mmgg.CoronaWebService.service.CoronaStatusService;
@@ -21,6 +22,11 @@ public class CoronaStatusController {
     @GetMapping("/")
     public String index(Model model) {
         model.addAttribute("d_status_list", coronaStatusService.getDomesticList());
+
+        List<CovidGraph> graphDate = coronaStatusService.getDomesticGraph().get("graphDate");
+        List<CovidGraph> graphConfirmed = coronaStatusService.getDomesticGraph().get("graphConfirmed");
+        model.addAttribute("graphDate", graphDate);
+        model.addAttribute("graphConfirmed", graphConfirmed);
         return "index";
     }
 }
