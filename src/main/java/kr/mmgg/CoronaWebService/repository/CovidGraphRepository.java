@@ -10,6 +10,8 @@ import java.util.Optional;
 
 @Repository
 public interface CovidGraphRepository extends JpaRepository<CovidGraph, Long> {
-    List<CovidGraph> findByDate();
-    List<CovidGraph> fingByConfirmed_p();
+
+    List<CovidGraph> findByDate(String string);
+
+    //List<CovidGraph> fingByConfirmed_p(String string);
 }

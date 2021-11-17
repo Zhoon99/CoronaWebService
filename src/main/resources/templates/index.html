@@ -92,14 +92,12 @@
             <script>
                 var ctx = document.getElementById('myChart').getContext('2d');
                 var chart = new Chart(ctx, {
-                    // 챠트 종류를 선택
                     type: 'line',
-                    // 챠트를 그릴 데이타
                     data: { labels: ['January', 'February', 'March', 'April', 'May', 'June', 'July'],
                     datasets: [{
-                        label: 'My First dataset',
+                        label: '코로나 상황판',
                         backgroundColor: 'transparent',
-                        borderColor: 'red',
+                        borderColor: 'blue',
                         data: [0, 10, 5, 2, 20, 30, 45]
                     }]
                 },
@@ -115,20 +113,18 @@
               <table class="table table-striped table-sm">
                 <thead>
                   <tr>
+                    <th scope="col">지역번호</th>
                     <th scope="col">지역</th>
-                    <th scope="col">오늘 확진자</th>
-                    <th scope="col">총 확진자</th>
-                    <th scope="col">총 사망자</th>
-                    <th scope="col">총 완치자</th>
+                    <th scope="col">확진자</th>
+                    <th scope="col">날짜</th>
                   </tr>
                 </thead>
                 <tbody>
-                  <tr th:each="d : ${d_status_list}">
-                    <td th:text="${d.city_name}">err</td>
-                    <td th:text="${d.decide_cnt}">err</td>
-                    <td th:text="${d.result_neg_cnt}">err</td>
-                    <td th:text="${d.death_cnt}">err</td>
-                    <td th:text="${d.care_cnt}">err</td>
+                  <tr th:each="c : ${covidMap}">
+                    <td th:text="${c.city_code}">err</td>
+                    <td th:text="${c.city_name}">err</td>
+                    <td th:text="${c.confirmed_p} + ' 명'">err</td>
+                    <td th:text="${c.date}">err</td>
                   </tr>
                 </tbody>
               </table>
